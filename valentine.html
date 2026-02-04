@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Will You Be My Valentine?</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+    }
+
+    .box {
+        background: #fff;
+        padding: 50px 70px;
+        border-radius: 25px;
+        text-align: center;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        position: relative;
+    }
+
+    h1 {
+        color: #ff3366;
+        font-size: 32px;
+        margin-bottom: 35px;
+    }
+
+    .buttons {
+        position: relative;
+        height: 60px;
+    }
+
+    button {
+        font-size: 18px;
+        padding: 12px 35px;
+        border-radius: 30px;
+        border: none;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    #yesBtn {
+        background: #ff3366;
+        color: white;
+    }
+
+    #noBtn {
+        background: #e0e0e0;
+        color: #444;
+        position: absolute;
+        left: 140px;
+    }
+
+    .final {
+        display: none;
+        margin-top: 30px;
+        font-size: 22px;
+        color: #ff3366;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h1>Anushka, will you be my Valentine? 💖</h1>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes ❤️</button>
+        <button id="noBtn">No 😅</button>
+    </div>
+
+    <div class="final" id="finalMessage">
+        Yayyy!! 🥰💘 <br>
+        I knew you’d say yes ❤️<br><br>
+        Happy Valentine’s Day 🌹
+    </div>
+</div>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const finalMsg = document.getElementById("finalMessage");
+
+    function moveNo() {
+        const box = document.querySelector(".box");
+        const maxX = box.offsetWidth - noBtn.offsetWidth;
+        const maxY = 40;
+
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
+
+    noBtn.addEventListener("mouseenter", moveNo);
+    noBtn.addEventListener("click", moveNo);
+
+    yesBtn.addEventListener("click", () => {
+        finalMsg.style.display = "block";
+        yesBtn.style.display = "none";
+        noBtn.style.display = "none";
+    });
+</script>
+
+</body>
+</html>
